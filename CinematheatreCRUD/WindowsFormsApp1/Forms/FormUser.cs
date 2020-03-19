@@ -61,7 +61,7 @@ namespace WindowsFormsApp1
                 MySqlDataReader dataReader = DBConnector.mySqlCommand.ExecuteReader();
 
                 dataReader.Read();
-                textBoxFilmYear.Text = Convert.ToString(dataReader.GetInt32("year")); 
+                textBoxFilmYear.Text = Convert.ToString(dataReader.GetInt32("year")+"г."); 
                 textBoxFilmProducer.Text = dataReader.GetString("producer"); 
                 textBoxFilmCountry.Text = dataReader.GetString("country"); 
                 dataReader.Close();

@@ -27,11 +27,6 @@ namespace WindowsFormsApp1
         private void FormAdministrator_Load(object sender, EventArgs e)
         {
 
-
-
-
-
-
             DBConnector.mySqlCommand.CommandText = "SELECT films.name, sessions.ticket_cost, sessions.time, sessions.tickets_count FROM films JOIN sessions ON sessions.film_id = films.id";
 
             MySqlDataReader dataReader = DBConnector.mySqlCommand.ExecuteReader();
@@ -86,13 +81,10 @@ namespace WindowsFormsApp1
 
             }
             dataReader.Close();
-
-
         }
 
         private void comboBoxFilms_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void buttonAddTicket_Click(object sender, EventArgs e)
@@ -118,9 +110,7 @@ namespace WindowsFormsApp1
 
 
                 MessageBox.Show("Билет добавлен");
-
                 dataGridViewSessions.Rows.Clear();
-
                 textBoxTicketCost.Clear();
                 textBoxTicketsCount.Clear();
                 comboBoxFilms.Text = "";
@@ -140,6 +130,7 @@ namespace WindowsFormsApp1
                 dataReader.Close();
 
                 // НЕ ДОБАВЛЯЕТСЯ ИЗ-ЗА НЕПРАВИЛЬНОГО ВРЕМЕНИ
+                // ALREADY FIXED BY FORMAT OF SQL DATETIME STRING!!!!!!!!!
 
 
             }
