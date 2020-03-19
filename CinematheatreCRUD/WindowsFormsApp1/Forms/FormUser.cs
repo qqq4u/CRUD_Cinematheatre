@@ -33,9 +33,6 @@ namespace WindowsFormsApp1
                 {
 
                     dataGridViewSessions.Rows.Add((dataReader.GetString("name")), (Convert.ToString(dataReader.GetInt32("ticket_cost")) + "₽"), dataReader.GetMySqlDateTime("time"), dataReader.GetInt32("tickets_count"));
-
-
-
                 }
                
             }
@@ -102,8 +99,7 @@ namespace WindowsFormsApp1
 
                 DBConnector.mySqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Билет успешно приобретён!");
-
+                MessageBox.Show($@"Билет на фильм '{textBoxFilmName.Text}', время сеанса {dateTimePickerTime.Value} успешно приобретён за {textBoxTicketCost.Text}!");;
 
                 dataGridViewSessions.Rows.Clear();
 

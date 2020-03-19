@@ -115,6 +115,7 @@
             this.Controls.Add(this.buttonRegister);
             this.Name = "FormRegistration";
             this.Text = "FormRegistration";
+            this.Load += new System.EventHandler(this.FormRegistration_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

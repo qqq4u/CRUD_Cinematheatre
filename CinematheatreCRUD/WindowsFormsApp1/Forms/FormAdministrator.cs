@@ -121,6 +121,10 @@ namespace WindowsFormsApp1
 
                 dataGridViewSessions.Rows.Clear();
 
+                textBoxTicketCost.Clear();
+                textBoxTicketsCount.Clear();
+                comboBoxFilms.Text = "";
+
                 DBConnector.mySqlCommand.CommandText = "SELECT films.name, sessions.ticket_cost, sessions.time, sessions.tickets_count FROM films JOIN sessions ON sessions.film_id = films.id";
  dataReader = DBConnector.mySqlCommand.ExecuteReader();
 

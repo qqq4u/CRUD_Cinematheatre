@@ -29,8 +29,8 @@ namespace WindowsFormsApp1
                 this.Visible = false;
                 form.ShowDialog();
                 this.Visible = true;
-                textBoxLogin.Text = "";
-                textBoxPassword.Text = "";
+                textBoxLogin.Clear();
+                textBoxPassword.Clear();
             }
             else
             {
@@ -44,8 +44,15 @@ namespace WindowsFormsApp1
                     this.Visible = false;
                     form.ShowDialog();
                     this.Visible = true;
-                    textBoxLogin.Text = "";
-                    textBoxPassword.Text = "";
+                    textBoxLogin.Clear();
+                    textBoxPassword.Clear();
+                }
+                else
+                {
+                    reader.Close();
+                    MessageBox.Show("Такого пользователя не существует, проверьте правильность введённых данных или пройдите регистрацию!");
+                    textBoxLogin.Clear();
+                    textBoxPassword.Clear();
                 }
             }
 

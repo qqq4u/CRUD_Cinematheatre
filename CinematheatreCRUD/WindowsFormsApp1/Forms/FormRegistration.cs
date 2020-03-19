@@ -69,5 +69,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Не все поля заполнены!");
             }
         }
+
+        private void FormRegistration_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
