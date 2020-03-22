@@ -86,8 +86,6 @@ namespace WindowsFormsApp1
         {
             try
             {
-
-
                 DBConnector.mySqlCommand.CommandText = $@"SELECT * FROM `films` WHERE `name` = '{textBoxFilmName.Text}'";
 
                 MySqlDataReader dataReader = DBConnector.mySqlCommand.ExecuteReader();
@@ -99,6 +97,15 @@ namespace WindowsFormsApp1
                 dataReader.Close();
 
                 string formatForMySql = dateTimePickerTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+                DBConnector.mySqlCommand.CommandText = $@"SELECT * FROM sessions WHERE sessions.film_id = {id} AND sessions.time = '{formatForMySql}'";
+                dataReader = DBConnector.mySqlCommand.ExecuteReader();
+
+                dataReader.Read();
+
+                if (Convert.ToInt32(labelBalance.Text) - dataReader.GetInt32("tucket_cost") >= 0)
+                {
 
                 DBConnector.mySqlCommand.CommandText = $@"UPDATE sessions SET sessions.tickets_count = sessions.tickets_count - 1 WHERE sessions.film_id = {id} AND sessions.time = '{formatForMySql}'";
 
@@ -143,6 +150,11 @@ namespace WindowsFormsApp1
                 dataReader.Read();
                 labelBalance.Text = dataReader.GetInt32("balance").ToString() + "₽";
                 dataReader.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Недостаточно средств на балансе!");
+                }
 
             }
             catch (Exception qwe)
