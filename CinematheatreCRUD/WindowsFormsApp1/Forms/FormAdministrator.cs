@@ -140,5 +140,18 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Ошибка добавления");
             }
         }
+
+        private void dataGridViewSessions_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonAddingBalance_Click(object sender, EventArgs e)
+        {
+            Form form = new FormUsersBalance();
+            this.Visible = false;
+            form.ShowDialog();
+            this.Visible = true;
+        }
     }
 }

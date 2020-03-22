@@ -22,22 +22,22 @@ namespace WindowsFormsApp1
         {
             if (textBoxLogin.Text != "" || textBoxPassword.Text != "")
             {
-                DBConnector.mySqlCommand.CommandText = $@"SELECT * FROM `administrators` WHERE `login` = '{textBoxLogin.Text}' AND `password` = '{ textBoxPassword.Text}'";
+                DBConnector.mySqlCommand.CommandText = $@"SELECT * FROM `administrators` WHERE `login` = '{textBoxLogin.Text}'";
                 MySqlDataReader reader = DBConnector.mySqlCommand.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Close();
-                    MessageBox.Show("Такая пара логин/пароль уже существует!");
+                    MessageBox.Show("Такой пользователь уже существует!");
                 }
                 else
                 {
                     reader.Close();
-                    DBConnector.mySqlCommand.CommandText = $@"SELECT * FROM `users` WHERE `login` = '{textBoxLogin.Text}' AND `password` = '{ textBoxPassword.Text}'";
+                    DBConnector.mySqlCommand.CommandText = $@"SELECT * FROM `users` WHERE `login` = '{textBoxLogin.Text}'";
                  reader = DBConnector.mySqlCommand.ExecuteReader();
                     if (reader.HasRows)
                     {
                         reader.Close();
-                        MessageBox.Show("Такая пара логин/пароль уже существует!");
+                        MessageBox.Show("Такой пользователь уже существует!");
                     }
                     else
                     {
@@ -64,6 +64,8 @@ namespace WindowsFormsApp1
                 }
 
             }
+            // TODO СДелать запрет регистрации одинакого логина
+
             else
             {
                 MessageBox.Show("Не все поля заполнены!");

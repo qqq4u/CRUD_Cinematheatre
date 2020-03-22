@@ -37,8 +37,14 @@ namespace WindowsFormsApp1
                
             }
             dataReader.Close();
-         
-           // dataGridViewSessions.Rows.RemoveAt(dataGridViewSessions.Rows.GetLastRow());
+            DBConnector.mySqlCommand.CommandText = $@"SELECT balance FROM users WHERE login = '{GlobalVariables.activeUserLogin}'";
+
+            dataReader = DBConnector.mySqlCommand.ExecuteReader();
+            dataReader.Read();
+            labelBalance.Text = dataReader.GetInt32("balance").ToString() + "₽";
+            dataReader.Close();
+
+            // dataGridViewSessions.Rows.RemoveAt(dataGridViewSessions.Rows.GetLastRow());
         }
 
         private void dataGridViewSessions_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -88,7 +94,6 @@ namespace WindowsFormsApp1
                 int id = 0;
                 if (dataReader.Read())
                 {
-
                     id = dataReader.GetInt32("id");
                 }
                 dataReader.Close();
@@ -96,6 +101,10 @@ namespace WindowsFormsApp1
                 string formatForMySql = dateTimePickerTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
                 DBConnector.mySqlCommand.CommandText = $@"UPDATE sessions SET sessions.tickets_count = sessions.tickets_count - 1 WHERE sessions.film_id = {id} AND sessions.time = '{formatForMySql}'";
+
+                DBConnector.mySqlCommand.ExecuteNonQuery();
+
+                DBConnector.mySqlCommand.CommandText = $@"UPDATE users SET users.balance = users.balance - {Convert.ToInt32(textBoxTicketCost.Text.Remove(textBoxTicketCost.Text.Length-1))} WHERE users.login = '{GlobalVariables.activeUserLogin}'";
 
                 DBConnector.mySqlCommand.ExecuteNonQuery();
 
@@ -128,11 +137,18 @@ namespace WindowsFormsApp1
                 textBoxFilmYear.Clear();
                 textBoxTicketCost.Clear();
 
+                DBConnector.mySqlCommand.CommandText = $@"SELECT balance FROM users WHERE login = '{GlobalVariables.activeUserLogin}' AND password = '{GlobalVariables.activeUserPassword}'";
+
+                dataReader = DBConnector.mySqlCommand.ExecuteReader();
+                dataReader.Read();
+                labelBalance.Text = dataReader.GetInt32("balance").ToString() + "₽";
+                dataReader.Close();
+
             }
             catch (Exception qwe)
             {
 
-                throw;
+                MessageBox.Show("Недостаточно средств на балансе");
             }
         }
     }

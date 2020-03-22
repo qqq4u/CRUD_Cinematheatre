@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
+            this.ColumnFilm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTicketsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddFilm = new System.Windows.Forms.Button();
             this.buttonAddTicket = new System.Windows.Forms.Button();
             this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
@@ -39,10 +43,7 @@
             this.comboBoxFilms = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTicketsCount = new System.Windows.Forms.TextBox();
-            this.ColumnFilm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTicketsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonBalances = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +59,31 @@
             this.dataGridViewSessions.Name = "dataGridViewSessions";
             this.dataGridViewSessions.Size = new System.Drawing.Size(552, 323);
             this.dataGridViewSessions.TabIndex = 1;
+            this.dataGridViewSessions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessions_CellContentClick_1);
+            // 
+            // ColumnFilm
+            // 
+            this.ColumnFilm.HeaderText = "Фильм";
+            this.ColumnFilm.Name = "ColumnFilm";
+            this.ColumnFilm.Width = 200;
+            // 
+            // ColumnTicketsCount
+            // 
+            this.ColumnTicketsCount.HeaderText = "Количество билетов";
+            this.ColumnTicketsCount.Name = "ColumnTicketsCount";
+            this.ColumnTicketsCount.Width = 75;
+            // 
+            // ColumnCost
+            // 
+            this.ColumnCost.HeaderText = "Цена билета";
+            this.ColumnCost.Name = "ColumnCost";
+            this.ColumnCost.Width = 75;
+            // 
+            // ColumnDate
+            // 
+            this.ColumnDate.HeaderText = "Время сеанса";
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.Width = 150;
             // 
             // buttonAddFilm
             // 
@@ -156,35 +182,23 @@
             this.textBoxTicketsCount.Size = new System.Drawing.Size(45, 22);
             this.textBoxTicketsCount.TabIndex = 16;
             // 
-            // ColumnFilm
+            // buttonBalances
             // 
-            this.ColumnFilm.HeaderText = "Фильм";
-            this.ColumnFilm.Name = "ColumnFilm";
-            this.ColumnFilm.Width = 200;
-            // 
-            // ColumnTicketsCount
-            // 
-            this.ColumnTicketsCount.HeaderText = "Количество билетов";
-            this.ColumnTicketsCount.Name = "ColumnTicketsCount";
-            this.ColumnTicketsCount.Width = 75;
-            // 
-            // ColumnCost
-            // 
-            this.ColumnCost.HeaderText = "Цена билета";
-            this.ColumnCost.Name = "ColumnCost";
-            this.ColumnCost.Width = 75;
-            // 
-            // ColumnDate
-            // 
-            this.ColumnDate.HeaderText = "Время сеанса";
-            this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.Width = 150;
+            this.buttonBalances.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonBalances.Location = new System.Drawing.Point(108, 498);
+            this.buttonBalances.Name = "buttonBalances";
+            this.buttonBalances.Size = new System.Drawing.Size(298, 39);
+            this.buttonBalances.TabIndex = 18;
+            this.buttonBalances.Text = "Балансы пользователей";
+            this.buttonBalances.UseVisualStyleBackColor = true;
+            this.buttonBalances.Click += new System.EventHandler(this.buttonAddingBalance_Click);
             // 
             // FormAdministrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 467);
+            this.ClientSize = new System.Drawing.Size(563, 592);
+            this.Controls.Add(this.buttonBalances);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxTicketsCount);
             this.Controls.Add(this.comboBoxFilms);
@@ -222,5 +236,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTicketsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
+        private System.Windows.Forms.Button buttonBalances;
     }
 }

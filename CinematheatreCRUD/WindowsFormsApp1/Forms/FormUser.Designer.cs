@@ -46,6 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxFilmCountry = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelBalance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,11 +210,33 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Страна";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(675, 316);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 24);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Баланс:";
+            // 
+            // labelBalance
+            // 
+            this.labelBalance.AutoSize = true;
+            this.labelBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBalance.Location = new System.Drawing.Point(757, 316);
+            this.labelBalance.Name = "labelBalance";
+            this.labelBalance.Size = new System.Drawing.Size(43, 24);
+            this.labelBalance.TabIndex = 17;
+            this.labelBalance.Text = "111";
+            // 
             // FormUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 422);
+            this.Controls.Add(this.labelBalance);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxFilmCountry);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxFilmProducer);
@@ -256,5 +280,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTicketsCount;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelBalance;
     }
 }

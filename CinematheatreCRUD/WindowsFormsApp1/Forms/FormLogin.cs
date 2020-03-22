@@ -39,6 +39,8 @@ namespace WindowsFormsApp1
                reader = DBConnector.mySqlCommand.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    GlobalVariables.activeUserLogin = textBoxLogin.Text;
+                    GlobalVariables.activeUserPassword = textBoxPassword.Text;
                     reader.Close();
                     Form form = new FormUser();
                     this.Visible = false;
@@ -63,7 +65,7 @@ namespace WindowsFormsApp1
             DBConnector.mySqlConnection.Open();
             DBConnector.mySqlCommand.Connection = DBConnector.mySqlConnection;
         }
-        // TODO сделать сортировку по дате, то есть вывод тех сеансов, которые ещё не прошли(в форме пользователя)
+
 
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
